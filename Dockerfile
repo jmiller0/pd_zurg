@@ -1,6 +1,6 @@
 ﻿FROM rclone/rclone:latest
 WORKDIR /
-ADD https://github.com/itsToggle/plex_debrid/archive/refs/heads/main.zip /
+ADD https://github.com/jmiller0/plex_debrid/archive/refs/heads/main.zip /
 ADD . / ./
 ADD https://raw.githubusercontent.com/debridmediamanager/zurg-testing/main/config.yml /zurg/
 ENV \
