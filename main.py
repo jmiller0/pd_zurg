@@ -1,7 +1,7 @@
 from base import *
 import plex_debrid_ as p
 import zurg as z 
-from rclone_rd import rclone
+from rclone import rclone
 from cleanup import duplicate_cleanup
 from update import auto_update
 
@@ -9,18 +9,18 @@ from update import auto_update
 def main():
     logger = get_logger()
 
-    version = '2.1.4'
+    version = '2.4.3'
 
     ascii_art = f'''
                                                                           
  _______  ______       _______           _______  _______ 
-(  ____ )(  __  \     / ___   )|\     /|(  ____ )(  ____ \\
-| (    )|| (  \  )    \/   )  || )   ( || (    )|| (    \/
+(  ____ )(  __  \\     / ___   )|\\     /|(  ____ )(  ____ \\
+| (    )|| (  \\  )    \\/   )  || )   ( || (    )|| (    \\/
 | (____)|| |   ) |        /   )| |   | || (____)|| |      
 |  _____)| |   | |       /   / | |   | ||     __)| | ____ 
-| (      | |   ) |      /   /  | |   | || (\ (   | | \_  )
-| )      | (__/  )     /   (_/\| (___) || ) \ \__| (___) |
-|/       (______/_____(_______/(_______)|/   \__/(_______)
+| (      | |   ) |      /   /  | |   | || (\\ (   | | \\_  )
+| )      | (__/  )     /   (_/\\| (___) || ) \\ \\__| (___) |
+|/       (______/_____(_______/(_______)|/   \\__/(_______)
                 (_____)                                   
                         Version: {version}                                    
 '''
@@ -82,10 +82,10 @@ def main():
             try:
                 p.setup.pd_setup()
                 pd_updater = p.update.PlexDebridUpdate()
-                if PDUPDATE:
-                    pd_updater.auto_update('plex_debrid',True)
-                else:
-                    pd_updater.auto_update('plex_debrid',False)
+                #if PDUPDATE:
+                    #pd_updater.auto_update('plex_debrid',True)
+                #else:
+                pd_updater.auto_update('plex_debrid',False)
             except Exception as e:
                 logger.error(f"An error occurred in the plex_debrid setup: {e}")
     except:
