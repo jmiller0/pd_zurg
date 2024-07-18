@@ -6,11 +6,54 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## Version [2.4.3] - 2024-07-17
+
+### Fixed
+
+- Rclone: Fixed WebDAV URL check for Zurg startup processes to accept all 2xx status codes
+
+
+## Version [2.4.2] - 2024-07-16
+
+### Fixed
+
+- Rclone: Fixed WebDAV URL check for Zurg startup processes when Zurg user and password are set in config.yml
+
+
+## Version [2.4.1] - 2024-07-16
+
+### Fixed
+
+- Zurg: Fixed the removal of Zurg user and password if previously set in config.yml
+- Rclone: Introduced a Rclone startup check for the Zurg WebDAV URL to ensure the Zurg startup processes have finished before starting Rclone
+
+
+## Version [2.4.0] - 2024-06-26
+
+### Added
+
+- Zurg: GITHUB_TOKEN environment variable to use for access to the private sponsored zurg repository
+
+
+## Version [2.3.0] - 2024-06-19
+
+### Changed
+- plex_debrid: The original plex_debird repository files are now stored within this repository. This is to ensure that if the original repository is deleted or removed from GitHub, this repository will still function. It's also simpler than maintaining a forked repository.
+
+
+## Version [2.2.0] - 2024-06-19
+
+### Changed
+
+- plex_debrid: Updates for plex_debrid are disabled, as plex_debrid is no longer maintained.
+
+
 ## Version [2.1.5] - 2024-05-09
 
 ### Fixed
  
 - [Issue #666](https://github.com/itsToggle/plex_debrid/issues/666) - Fixed issue with trakt sync not working properly in plex_debrid. Thanks to @mash2k3 for the fix!
+
 
 ## Version [2.1.4] - 2024-02-27
 

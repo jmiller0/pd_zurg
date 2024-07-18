@@ -1,35 +1,37 @@
-# pd_zurg
+﻿<div align="center" style="max-width: 100%; height: auto;">
+  <a href="https://github.com/I-am-PUID-0/DMB">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/I-am-PUID-0/pd_zurg/assets/36779668/da811d50-18bf-4498-b508-2b1a6ed848bc">
+      <img alt="pd_zurg" src="https://github.com/I-am-PUID-0/pd_zurg/assets/36779668/da811d50-18bf-4498-b508-2b1a6ed848bc" style="max-width: 100%; height: auto;">
+    </picture>
+  </a>
+</div>
 
-## Description
+## 📜 Description
 A combined docker image for the unified deployment of **[itsToggle's](https://github.com/itsToggle)**, **[yowmamasita's](https://github.com/yowmamasita)**, and **[ncw's](https://github.com/ncw)** projects -- **[plex_debrid](https://github.com/itsToggle/plex_debrid)**, **[zurg](https://github.com/debridmediamanager/zurg-testing)**, and **[rclone](https://github.com/rclone/rclone)**
 
 
-## Features
- - [Optional independent or combined utilization of plex_debrid and zurg w/ rclone](https://github.com/I-am-PUID-0/pd_zurg/wiki#optional-independent-or-combined-utilization-of--plex_debrid-and-zurg-w-rclone)
- - [Simultaneous independent rclone mounts](https://github.com/I-am-PUID-0/pd_zurg/wiki#simultaneous-independent-rclone-mounts)
- - [Bind-mounts rclone to the host](https://github.com/I-am-PUID-0/pd_zurg/wiki#bind-mounts-rclone-to-the-host)
- - [Debrid service API Key passed to zurg and plex_debrid via docker environment variable](https://github.com/I-am-PUID-0/pd_zurg/wiki#debrid-api-key-passed-to-zurg-and-plex_debrid-via-docker-environment-variable)
- - [rclone config automatically generated](https://github.com/I-am-PUID-0/pd_zurg/wiki#rclone-config-automatically-generated)
- - [rclone flags passed via docker environment variable](https://github.com/I-am-PUID-0/pd_zurg/wiki#rclone-flags-passed-via-docker-environment-variable)
- - [Fuse.conf ```user_allow_other``` applied within the container vs. the host](https://github.com/I-am-PUID-0/pd_zurg/wiki#fuseconf-user_allow_other-applied-within-the-container-vs-the-host)
- - [Plex server values passed to plex_debrid settings.json via docker environment variables](https://github.com/I-am-PUID-0/pd_zurg/wiki#plex-server-values-passed-to-plex_debrid-settingsjson-via-docker-environment-variables)
- - [Automatic Update of plex_debrid to the latest version](https://github.com/I-am-PUID-0/pd_zurg/wiki#automatic-update-of-plex_debrid-to-the-latest-version)
- - [Automatic Update of Zurg to the latest version](https://github.com/I-am-PUID-0/pd_zurg/wiki#automatic-update-of-zurg-to-the-latest-version)
- - [Version selection of zurg to the user-defined version](https://github.com/I-am-PUID-0/pd_zurg/wiki#version-selection-of-zurg-to-the-user-defined-version)
- - [Use of .env file for setting environment variables](https://github.com/I-am-PUID-0/pd_zurg/wiki#use-of-env-file-for-setting-environment-variables)
- - [Use of Docker Secret file for setting sensitive variables](https://github.com/I-am-PUID-0/pd_zurg#docker-secrets)
- - [Duplicate Cleanup](https://github.com/I-am-PUID-0/pd_zurg/wiki#duplicate-cleanup) 
- - [NFS Server for rclone](https://github.com/I-am-PUID-0/pd_zurg/wiki/Features#rclone-nfs-server) 
- - [Zurg username and password configuration](https://github.com/I-am-PUID-0/pd_zurg/wiki/Features#zurg_user--zurg_pass)
+>⚠️ **IMPORTANT**: Docker Desktop **CANNOT** be used to run pd_zurg. 
+>
+> Docker Desktop does not support the [mount propagation](https://docs.docker.com/storage/bind-mounts/#configure-bind-propagation) required for rclone mounts. 
+>
+> ![image](https://github.com/I-am-PUID-0/pd_zurg/assets/36779668/08887298-6a9c-4980-98bb-f119f8632a99)
+>
+> See the wiki for [alternative solutions](https://github.com/I-am-PUID-0/pd_zurg/wiki/Setup-Guides) to run pd_zurg on Windows through WSL2.
 
-## Docker Hub
+
+## 🌟 Features
+
+See the pd_zurg [Wiki](https://github.com/I-am-PUID-0/pd_zurg/wiki) for a full list of features and settings
+
+## 🐳 Docker Hub
 A prebuilt image is hosted on [docker hub](https://hub.docker.com/r/iampuid0/pd_zurg) 
 
-## GitHub Container Registry
+## 🏷️ GitHub Container Registry
 A prebuilt image is hosted on [GitHub Container Registry](https://github.com/I-am-PUID-0/pd_zurg/pkgs/container/pd_zurg)
 
 
-## Docker-compose
+## 🛠️ Docker-compose
 ```YAML
 version: "3.8"
 
@@ -94,7 +96,7 @@ services:
      # - JF_ADDRESS
      # - JF_API_KEY
       ## Plex Debrid Optional Settings
-     # - PD_UPDATE=true   
+     # - PD_UPDATE=true # deprecated; plex_drbrid is no longer maintained 
      # - SHOW_MENU=false
      # - SEERR_API_KEY=
      # - SEERR_ADDRESS=
@@ -115,7 +117,7 @@ services:
       - no-new-privileges
 ```
 
-## Docker Build
+## 🔨 Docker Build
 
 ### Docker CLI
 
@@ -123,32 +125,34 @@ services:
 docker build -t your-image-name https://github.com/I-am-PUID-0/pd_zurg.git
 ```
 
-## Plex or Jellyfin/Emby deployment
+## 🎥 Plex or Jellyfin/Emby deployment
 
 To use plex_debrid with Plex, the following environment variables are required: PD_ENABLED, PLEX_USER, PLEX_TOKEN, PLEX_ADDRESS
 
 To use plex_debrid with Jellyfin/Emby, the following environment variables are required: PD_ENABLED, JF_ADDRESS, JF_API_KEY
 
-### Note: Addtional setup required for Jellyfin
-plex_debrid requires the Library collection service to be set for Trakt Collection: see the plex_debrid [Trakt Collections](https://github.com/itsToggle/plex_debrid#open_file_folder-library-collection-service) for more details
+> ⚠️ Note: Addtional setup required for Jellyfin
+>
+> plex_debrid requires the Library collection service to be set for Trakt Collection: see the plex_debrid [Trakt Collections](https://github.com/itsToggle/plex_debrid#open_file_folder-library-collection-service) for more details
 
-## Plex Refresh
+## 🔄 Plex Refresh
 
 To enable Plex library refresh with Zurg, the following environment variables are required: PLEX_REFRESH, PLEX_MOUNT_DIR, PLEX_ADDRESS, PLEX_TOKEN, ZURG_ENABLED, RD_API_KEY, RCLONE_MOUNT_NAME
 
-## SEERR Integration
+## 🔗 SEERR Integration
 
 To enable either Overseerr or Jellyseerr integration with plex_debrid, the following environment variables are required: SEERR_API_KEY, SEERR_ADDRESS
 
 
-## Automatic Updates
-If you would like to enable automatic updates for plex_debrid, utilize the ```PD_UPDATE``` environment variable. 
-Additional details can be found in the [pd_zurg Wiki](https://github.com/I-am-PUID-0/pd_zurg/wiki#automatic-update-of-plex_debrid-to-the-latest-version)
+## 🔄 Automatic Updates
+~~If you would like to enable automatic updates for plex_debrid, utilize the ```PD_UPDATE``` environment variable. 
+Additional details can be found in the [pd_zurg Wiki](https://github.com/I-am-PUID-0/pd_zurg/wiki#automatic-update-of-plex_debrid-to-the-latest-version)~~ \
+deprecated; plex_drbrid is no longer maintained
 
 If you would like to enable automatic updates for Zurg, utilize the ```ZURG_UPDATE``` environment variable. 
 Additional details can be found in the [pd_zurg Wiki](https://github.com/I-am-PUID-0/pd_zurg/wiki#automatic-update-of-zurg-to-the-latest-version)
 
-## Environment Variables
+## 🌐 Environment Variables
 
 To customize some properties of the container, the following environment
 variables can be passed via the `-e` parameter (one for each variable), or via the docker-compose file within the ```environment:``` section, or with a .env file saved to the config directory -- See the wiki for more info on using the [.env](https://github.com/I-am-PUID-0/pd_zurg/wiki/Settings#use-of-env-file-for-setting-environment-variables).  Value
@@ -175,7 +179,7 @@ of this parameter has the format `<VARIABLE_NAME>=<VALUE>`.
 |`SHOW_MENU`| Enable the plex_debrid menu to show upon startup, requiring user interaction before the program runs. Conversely, if the plex_debrid menu is disabled, the program will automatically run upon successful startup. If used, the value must be ```true``` or ```false``` | `true` |
 |`PD_ENABLED`| Set the value "true" to enable the plex_debrid process | `false ` | | :heavy_check_mark: | |
 |`PD_LOGFILE`| Log file for plex_debrid. The log file will appear in the ```/config``` as ```plex_debrid.log```. If used, the value must be ```true``` or ```false``` | `false` |
-|`PD_UPDATE`| Enable automatic updates of plex_debrid. Adding this variable will enable automatic updates to the latest version of plex_debrid locally within the container. | `false` |
+|~~`PD_UPDATE`~~| ~~Enable automatic updates of plex_debrid. Adding this variable will enable automatic updates to the latest version of plex_debrid locally within the container.~~ deprecated; plex_drbrid is no longer maintained| `false` |
 |`AUTO_UPDATE_INTERVAL`| Interval between automatic update checks in hours. Vaules can be any positive [whole](https://www.oxfordlearnersdictionaries.com/us/definition/english/whole-number) or [decimal](https://www.oxfordreference.com/display/10.1093/oi/authority.20110803095705740;jsessionid=3FDC96CC0D79CCE69702661D025B9E9B#:~:text=The%20separator%20used%20between%20the,number%20expressed%20in%20decimal%20representation.) point based number. Ex. a value of .5 would yield thirty minutes, and 1.5 would yield one and a half hours | `24` |
 |`DUPLICATE_CLEANUP`| Automated cleanup of duplicate content in Plex.  | `false` |
 |`CLEANUP_INTERVAL`| Interval between duplicate cleanup in hours. Values can be any positive [whole](https://www.oxfordlearnersdictionaries.com/us/definition/english/whole-number) or [decimal](https://www.oxfordreference.com/display/10.1093/oi/authority.20110803095705740;jsessionid=3FDC96CC0D79CCE69702661D025B9E9B#:~:text=The%20separator%20used%20between%20the,number%20expressed%20in%20decimal%20representation.) point based number. Ex. a value of .5 would yield thirty minutes and 1.5 would yield one and a half hours | `24` |
@@ -185,6 +189,7 @@ of this parameter has the format `<VARIABLE_NAME>=<VALUE>`.
 |`ZURG_VERSION`| The version of Zurg to use. If enabled, the value should contain v0.9.x or v0.9.x-hotfix.x format | `latest` | | | |
 |`ZURG_UPDATE`| Enable automatic updates of Zurg. Adding this variable will enable automatic updates to the latest version of Zurg locally within the container. | `false` | | | |
 |`ZURG_LOG_LEVEL`| Set the log level for Zurg | `INFO` | | | |
+|`GITHUB_TOKEN`| GitHub Personal Token for use with Zurg private repo. Requires Zurg [sponsorship](https://github.com/sponsors/debridmediamanager) | `false ` | | | |
 |`JF_API_KEY`| The Jellyfin/Emby API Key ||| ||
 |`JF_ADDRESS`| The URL of your Jellyfin/Emby server. Example: http://192.168.0.101:8096 or http://jellyfin:8096 - format must include ```http://``` or ```https://``` and have no trailing characters after the port number (8096). E.g., ```/``` ||| |
 |`SEERR_API_KEY`| The Jellyseerr or Overseerr API Key ||| ||
@@ -196,7 +201,7 @@ of this parameter has the format `<VARIABLE_NAME>=<VALUE>`.
 |`NFS_PORT`| The port to be used for the rclone NFS server | `random ` | | | |
 
 
-## Data Volumes
+## 📂 Data Volumes
 
 The following table describes the data volumes used by the container.  The mappings
 are set via the `-v` parameter or via the docker-compose file within the ```volumes:``` section.  Each mapping is specified with the following
@@ -210,12 +215,13 @@ format: `<HOST_DIR>:<CONTAINER_DIR>[:PERMISSIONS]`.
 |`/zurg/RD`| rw| This is where Zurg will store the active configuration and data for RealDebrid. Not required when only utilizing plex_debrid   |
 |`/zurg/AD`| rw | This is where Zurg will store the active configuration and data for AllDebrid. Not required when only utilizing plex_debrid   |
 
-## Docker Secrets
+## 🗝️ Docker Secrets
 
 pd_zurg supports the use of docker secrets for the following environment variables:
 
 | Variable       | Description                                  | Default | Required for rclone| Required for plex_debrid| Required for zurg|
 |----------------|----------------------------------------------|---------|:-:|:-:|:-:|
+|`GITHUB_TOKEN`| [GitHub Personal Token](https://github.com/settings/tokens) | ` ` | | | :heavy_check_mark:|
 |`RD_API_KEY`| [RealDebrid API key](https://real-debrid.com/apitoken) | ` ` | | :heavy_check_mark:| :heavy_check_mark:|
 |`AD_API_KEY`| [AllDebrid API key](https://alldebrid.com/apikeys/) | ` ` | | :heavy_check_mark:| :heavy_check_mark:|
 |`PLEX_USER`| The [Plex USERNAME](https://app.plex.tv/desktop/#!/settings/account) for your account | ` ` || :heavy_check_mark:|
@@ -234,6 +240,7 @@ services:
   pd_zurg:
     image: iampuid0/pd_zurg:latest
     secrets:
+      - github_token
       - rd_api_key
       - ad_api_key
       - plex_user
@@ -245,6 +252,8 @@ services:
       - seerr_address
 
 secrets:
+  github_token:
+    file: ./path/to/github_token.txt
   rd_api_key:
     file: ./path/to/rd_api_key.txt
   ad_api_key:
@@ -266,16 +275,19 @@ secrets:
 ```
 
 
-## TODO
+## 📝 TODO
 
 See the [pd_zurg roadmap](https://github.com/users/I-am-PUID-0/projects/4) for a list of planned features and enhancements.
 
-## Deployment
+
+## 🚀 Deployment
 
 pd_zurg allows for the simultaneous or individual deployment of plex_debrid and/or Zurg w/ rclone
 
 For additional details on deployment, see the [pd_zurg Wiki](https://github.com/I-am-PUID-0/pd_zurg/wiki/Setup-Guides#deployment-options)
-## Community
+
+
+## 🌍 Community
 
 ### pd_zurg
 - For questions related to pd_zurg, see the GitHub [discussions](https://github.com/I-am-PUID-0/pd_zurg/discussions)
@@ -288,17 +300,17 @@ For additional details on deployment, see the [pd_zurg Wiki](https://github.com/
 - or join the plex_debrid [discord server](https://discord.gg/u3vTDGjeKE) 
 
 
-## Buy **[itsToggle](https://github.com/itsToggle)** a beer/coffee? :)
+## 🍻 Buy **[itsToggle](https://github.com/itsToggle)** a beer/coffee? :)
 
 If you enjoy the underlying projects and want to buy itsToggle a beer/coffee, feel free to use the real-debrid [affiliate link](http://real-debrid.com/?id=5708990) or send a virtual beverage via [PayPal](https://www.paypal.com/paypalme/oidulibbe) :)
 
-## Buy **[yowmamasita](https://github.com/yowmamasita)** a beer/coffee? :)
+## 🍻 Buy **[yowmamasita](https://github.com/yowmamasita)** a beer/coffee? :)
 
 If you enjoy the underlying projects and want to buy yowmamasita a beer/coffee, feel free to use the [GitHub sponsor link](https://github.com/sponsors/debridmediamanager)
 
-## Buy **[ncw](https://github.com/ncw)** a beer/coffee? :) 
+## 🍻 Buy **[ncw](https://github.com/ncw)** a beer/coffee? :) 
 
 If you enjoy the underlying projects and want to buy Nick Craig-Wood a beer/coffee, feel free to use the website's [sponsor links](https://rclone.org/sponsor/)
 
-## GitHub Workflow Status
+## ✅ GitHub Workflow Status
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/I-am-PUID-0/pd_zurg/docker-image.yml)
