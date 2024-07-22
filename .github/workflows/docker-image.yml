@@ -93,7 +93,7 @@ jobs:
 
   announce:
     needs: build-and-push
-    if: needs.build-and-push.outputs.release_exists == 'false'
+    if: needs.build-and-push.outputs.release_exists == 'false' && env.ANNOUNCE_ENABLED == 'true'
     runs-on: ubuntu-latest
 
     steps:
